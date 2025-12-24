@@ -20,23 +20,24 @@ class ArCoreFaceController {
       await _channel.invokeMethod<void>('init', {
         'enableAugmentedFaces': enableAugmentedFaces,
       });
-    } on PlatformException catch (ex) {
-      print(ex.message);
+    } on PlatformException catch (_) {
+      // print(ex.message);
     }
   }
 
   Future<dynamic> _handleMethodCalls(MethodCall call) async {
-    if (debug) {
-      print('_platformCallHandler call ${call.method} ${call.arguments}');
-    }
+    // if (debug) {
+    //   print('_platformCallHandler call ${call.method} ${call.arguments}');
+    // }
     switch (call.method) {
       case 'onError':
         onError(call.arguments);
         break;
       default:
-        if (debug) {
-          print('Unknown method ${call.method}');
-        }
+        // if (debug) {
+        //   print('Unknown method ${call.method}');
+        // }
+        break;
     }
     return Future.value();
   }

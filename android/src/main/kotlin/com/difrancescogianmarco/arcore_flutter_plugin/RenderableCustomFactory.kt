@@ -41,7 +41,7 @@ class RenderableCustomFactory {
                     builder.build().thenAccept { renderable ->
                         handler(renderable, null)
                     }.exceptionally { throwable ->
-                        Log.e(TAG, "Unable to load Renderable.", throwable);
+                        // Log.e(TAG, "Unable to load Renderable.", throwable);
                         handler(null, throwable)
                         return@exceptionally null
                     }
@@ -69,7 +69,7 @@ class RenderableCustomFactory {
                             }
                             .exceptionally { throwable ->
                                 handler(null, throwable)
-                                Log.e(TAG, "renderable error ${throwable.localizedMessage}")
+                                // Log.e(TAG, "renderable error ${throwable.localizedMessage}")
                                 null
                             }
                 }
@@ -88,7 +88,7 @@ class RenderableCustomFactory {
                             .build()
                             .thenAccept(Consumer { renderable: ViewRenderable -> handler(renderable, null) })
                             .exceptionally { throwable ->
-                                Log.e(TAG, "Unable to load image renderable.", throwable);
+                                // Log.e(TAG, "Unable to load image renderable.", throwable);
                                 handler(null, throwable)
                                 return@exceptionally null
                             }
@@ -106,7 +106,7 @@ class RenderableCustomFactory {
                             val renderable = flutterArCoreNode.shape?.buildShape(material)
                             handler(renderable, null)
                         } catch (ex: Exception) {
-                            Log.e(TAG, "renderable error ${ex}")
+                            // Log.e(TAG, "renderable error ${ex}")
                             handler(null, ex)
                             Toast.makeText(context, ex.toString(), Toast.LENGTH_LONG)
                         }
@@ -133,7 +133,7 @@ class RenderableCustomFactory {
                     MaterialCustomFactory.makeWithTexture(context, texture, isPng, flutterArCoreNode.shape.materials[0])?.thenAccept { material ->
                         handler(material, null)
                     }?.exceptionally { throwable ->
-                        Log.e(TAG, "texture error ${throwable}")
+                        // Log.e(TAG, "texture error ${throwable}")
                         handler(null, throwable)
                         return@exceptionally null
                     }
@@ -143,7 +143,7 @@ class RenderableCustomFactory {
                         ?.thenAccept { material: Material ->
                             handler(material, null)
                         }?.exceptionally { throwable ->
-                            Log.e(TAG, "material error ${throwable}")
+                            // Log.e(TAG, "material error ${throwable}")
                             handler(null, throwable)
                             return@exceptionally null
                         }

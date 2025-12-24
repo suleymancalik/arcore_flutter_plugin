@@ -16,10 +16,10 @@ class ArCoreViewFactory(val activity: Activity, val messenger: BinaryMessenger) 
         val debug = params["debug"] as Boolean
         val type = params["type"] as String
 
-        if (debug) {
-            Log.i("ArCoreViewFactory", id.toString())
-            Log.i("ArCoreViewFactory", args.toString())
-        }
+        // if (debug) {
+        //     Log.i("ArCoreViewFactory", id.toString())
+        //     Log.i("ArCoreViewFactory", args.toString())
+        // }
 
         if (type == "faces") {
             return ArCoreFaceView(activity, context, messenger, id, debug)

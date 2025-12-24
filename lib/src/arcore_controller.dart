@@ -65,15 +65,15 @@ class ArCoreController {
         'enablePlaneRenderer': enablePlaneRenderer,
         'enableUpdateListener': enableUpdateListener,
       });
-    } on PlatformException catch (ex) {
-      print(ex.message);
+    } on PlatformException catch (_) {
+      // print(ex.message);
     }
   }
 
   Future<dynamic> _handleMethodCalls(MethodCall call) async {
-    if (debug ?? true) {
-      print('_platformCallHandler call ${call.method} ${call.arguments}');
-    }
+    // if (debug ?? true) {
+    //   print('_platformCallHandler call ${call.method} ${call.arguments}');
+    // }
 
     switch (call.method) {
       case 'onError':
@@ -106,38 +106,39 @@ class ArCoreController {
       case 'getTrackingState':
         // TRACKING, PAUSED or STOPPED
         trackingState = call.arguments;
-        if (debug ?? true) {
-          print('Latest tracking state received is: $trackingState');
-        }
+        // if (debug ?? true) {
+        //   print('Latest tracking state received is: $trackingState');
+        // }
         break;
       case 'onTrackingImage':
-        if (debug ?? true) {
-          print('flutter onTrackingImage');
-        }
+        // if (debug ?? true) {
+        //   print('flutter onTrackingImage');
+        // }
         final arCoreAugmentedImage =
             ArCoreAugmentedImage.fromMap(call.arguments);
         onTrackingImage!(arCoreAugmentedImage);
         break;
       case 'togglePlaneRenderer':
-        if (debug ?? true) {
-          print('Toggling Plane Renderer Visibility');
-        }
+        // if (debug ?? true) {
+        //   print('Toggling Plane Renderer Visibility');
+        // }
         togglePlaneRenderer();
         break;
 
       default:
-        if (debug ?? true) {
-          print('Unknown method ${call.method}');
-        }
+        // if (debug ?? true) {
+        //   print('Unknown method ${call.method}');
+        // }
+        break;
     }
     return Future.value();
   }
 
   Future<void> addArCoreNode(ArCoreNode node, {String? parentNodeName}) {
     final params = _addParentNodeNameToParams(node.toMap(), parentNodeName);
-    if (debug ?? true) {
-      print(params.toString());
-    }
+    // if (debug ?? true) {
+    //   print(params.toString());
+    // }
     _addListeners(node);
     return _channel.invokeMethod('addArCoreNode', params);
   }
@@ -160,13 +161,13 @@ class ArCoreController {
   Future<void> addArCoreNodeWithAnchor(ArCoreNode node,
       {String? parentNodeName}) {
     final params = _addParentNodeNameToParams(node.toMap(), parentNodeName);
-    if (debug ?? true) {
-      print(params.toString());
-    }
+    // if (debug ?? true) {
+    //   print(params.toString());
+    // }
     _addListeners(node);
-    if (debug ?? true) {
-      print('---------_CALLING addArCoreNodeWithAnchor : $params');
-    }
+    // if (debug ?? true) {
+    //   print('---------_CALLING addArCoreNodeWithAnchor : $params');
+    // }
     return _channel.invokeMethod('addArCoreNodeWithAnchor', params);
   }
 
@@ -248,7 +249,7 @@ class ArCoreController {
         'index': index,
       });
     } catch (ex) {
-      print(ex);
+      // print(ex);
     }
   }
 }

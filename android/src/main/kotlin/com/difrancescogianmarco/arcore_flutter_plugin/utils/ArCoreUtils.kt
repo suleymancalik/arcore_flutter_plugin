@@ -54,7 +54,7 @@ class ArCoreUtils {
             if (hasCameraPermission(activity)) {
                 session = when (ArCoreApk.getInstance().requestInstall(activity, userRequestedInstall)) {
                     ArCoreApk.InstallStatus.INSTALL_REQUESTED -> {
-                        Log.i(TAG, "ArCore INSTALL REQUESTED")
+                        // Log.i(TAG, "ArCore INSTALL REQUESTED")
                         null
                     }
                     //                    ArCoreApk.InstallStatus.INSTALLED -> {}
@@ -126,13 +126,13 @@ class ArCoreUtils {
             val tag = context.javaClass.simpleName
             val toastText: String
             if (problem != null && problem.message != null) {
-                Log.e(tag, errorMsg, problem)
+                // Log.e(tag, errorMsg, problem)
                 toastText = errorMsg + ": " + problem.message
             } else if (problem != null) {
-                Log.e(tag, errorMsg, problem)
+                // Log.e(tag, errorMsg, problem)
                 toastText = errorMsg
             } else {
-                Log.e(tag, errorMsg)
+                // Log.e(tag, errorMsg)
                 toastText = errorMsg
             }
 
@@ -158,7 +158,7 @@ class ArCoreUtils {
                 message = "This device does not support AR"
             } else {
                 message = "Failed to create AR session"
-                Log.e(TAG, "Exception: $sessionException")
+                // Log.e(TAG, "Exception: $sessionException")
             }
             Toast.makeText(activity, message, Toast.LENGTH_LONG).show()
         }
@@ -175,7 +175,7 @@ class ArCoreUtils {
          */
         fun checkIsSupportedDeviceOrFinish(activity: Activity): Boolean {
             if (Build.VERSION.SDK_INT < VERSION_CODES.N) {
-                Log.e(TAG, "Sceneform requires Android N or later")
+                // Log.e(TAG, "Sceneform requires Android N or later")
                 Toast.makeText(activity, "Sceneform requires Android N or later", Toast.LENGTH_LONG).show()
                 activity.finish()
                 return false
@@ -184,7 +184,7 @@ class ArCoreUtils {
                     .deviceConfigurationInfo
                     .glEsVersion
             if (java.lang.Double.parseDouble(openGlVersionString) < MIN_OPENGL_VERSION) {
-                Log.e(TAG, "Sceneform requires OpenGL ES 3.0 later")
+                // Log.e(TAG, "Sceneform requires OpenGL ES 3.0 later")
                 Toast.makeText(activity, "Sceneform requires OpenGL ES 3.0 or later", Toast.LENGTH_LONG)
                         .show()
                 activity.finish()

@@ -105,11 +105,11 @@ class ArCoreAugmentedImagesView(activity: Activity, context: Context, messenger:
 
 /*    fun setImage(image: AugmentedImage, anchorNode: AnchorNode) {
         if (!mazeRenderable.isDone) {
-            Log.d(TAG, "loading maze renderable still in progress. Wait to render again")
+            // Log.d(TAG, "loading maze renderable still in progress. Wait to render again")
             CompletableFuture.allOf(mazeRenderable)
                     .thenAccept { aVoid: Void -> setImage(image, anchorNode) }
                     .exceptionally { throwable ->
-                        Log.e(TAG, "Exception loading", throwable)
+                        // Log.e(TAG, "Exception loading", throwable)
                         null
                     }
             return
@@ -349,7 +349,7 @@ class ArCoreAugmentedImagesView(activity: Activity, context: Context, messenger:
             config.augmentedImageDatabase = augmentedImageDatabase
             true
         } catch (e: IOException) {
-            Log.e(TAG, "IO exception loading augmented image database.", e)
+            // Log.e(TAG, "IO exception loading augmented image database.", e)
             false
         }
     }
@@ -359,7 +359,7 @@ class ArCoreAugmentedImagesView(activity: Activity, context: Context, messenger:
        try {
            return  BitmapFactory.decodeByteArray(bitmapdata, 0, bitmapdata.size)
         } catch (e: Exception) {
-            Log.e(TAG, "IO exception loading augmented image bitmap.", e)
+            // Log.e(TAG, "IO exception loading augmented image bitmap.", e)
             return  null
         }
     }

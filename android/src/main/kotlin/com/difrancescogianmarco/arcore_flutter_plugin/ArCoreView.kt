@@ -141,9 +141,7 @@ class ArCoreView(val activity: Activity, context: Context, messenger: BinaryMess
     }
 
     fun debugLog(message: String) {
-        if (debug) {
-            Log.i(TAG, message)
-        }
+        // Log.i(TAG, message)
     }
 
 
@@ -617,7 +615,7 @@ class ArCoreView(val activity: Activity, context: Context, messenger: BinaryMess
                                 node.renderable = renderable
                                 anchorNode.addChild(node)
                             }.exceptionally { throwable ->
-                                Log.e(TAG, "Unable to load Renderable.", throwable);
+                                // Log.e(TAG, "Unable to load Renderable.", throwable);
                                 return@exceptionally null
                             }
                 }

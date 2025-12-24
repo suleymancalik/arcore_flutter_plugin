@@ -37,7 +37,7 @@ class ArCoreMaterial {
   });
 
   Map<String, dynamic> toMap() => <String, dynamic>{
-        'color': [color!.alpha, color!.red, color!.green, color!.blue],
+        'color': [color!.a, color!.r, color!.g, color!.b],
 //        'texture': this.texture,
         'textureBytes': this.textureBytes,
         'metallic': this.metallic,

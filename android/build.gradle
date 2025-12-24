@@ -34,6 +34,8 @@ android {
     defaultConfig {
         minSdkVersion 24
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        // ProGuard kurallarını ekle (ARCore loglarını kapatmak için)
+        consumerProguardFiles 'proguard-rules.pro'
     }
 
     // Sceneform libraries use language constructs from Java 8.
